@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+motor
+fastapi-jwt-auth
+pydantic
+python-dotenv
