@@ -1,8 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
-from app.config.auth import CustomAuthJWT as AuthJWT
+from app.config.auth import create_custom_jwt_auth
 from app.schemas.user import UserCreate as UserCreateSchema
 from app.models.user import UserCreate as UserCreateModel
-from app.config.auth import create_custom_jwt_auth
 from app.database.connection import get_db_client
 from motor.motor_asyncio import AsyncIOMotorClient
 from app.config.settings import get_settings

@@ -5,13 +5,14 @@ from typing import List
 from ..models.department import Department
 from ..database.connection import get_db_client, AsyncIOMotorClient
 from app.config.settings import get_settings
+from app.config.auth import get_current_user
 
 router = APIRouter()
 settings = get_settings()
 
 
 @router.get("/departments", response_model=List[Department])
-async def get_departments(db: AsyncIOMotorClient = Depends(get_db_client)):
+async def get_departments(current_user: str = Depends(get_current_user), db: AsyncIOMotorClient = Depends(get_db_client)):
     table = db[settings.MONGODB_DATABASE_NAME]["departments"]
     cursor = table.find()
 
